@@ -1,0 +1,49 @@
+{
+  "instrument": "Robkoo Clarii mini · Saxophone 운지(출고 기본) · 공식 매뉴얼 V2.2 기준",
+  "convention": "keys 배열의 키를 누른다(●). 나머지는 모두 뗀다(○). pc는 기준층 도(midi 60)로부터의 반음 거리. 실제 midi = 60 + 12×옥타브층 + pc (+ ♯이면 +1, ♭이면 −1). 기기 표시 음이름은 기준층이 C3~C4 (국제 표기보다 숫자가 1 작음).",
+  "baseMidi": 60,
+  "naturals": [
+    { "id": "do",   "kor": "도",     "letter": "C", "pc": 0,  "keys": ["K1","K2","K3","K4","K5","K6","K7"],
+      "tip": "일곱 키를 전부 누릅니다. 터치 키라 힘은 필요 없어요 — 손가락을 가볍게 '올려둔다'는 느낌으로." },
+    { "id": "re",   "kor": "레",     "letter": "D", "pc": 2,  "keys": ["K1","K2","K3","K4","K5","K6"],
+      "tip": "도에서 맨 아래 키(K7, 오른손 새끼)만 뗍니다." },
+    { "id": "mi",   "kor": "미",     "letter": "E", "pc": 4,  "keys": ["K1","K2","K3","K4","K5"],
+      "tip": "레에서 K6(오른손 약지)을 뗍니다." },
+    { "id": "fa",   "kor": "파",     "letter": "F", "pc": 5,  "keys": ["K1","K2","K3","K4"],
+      "tip": "미에서 K5(오른손 중지)를 뗍니다. 오른손은 검지(K4) 하나만 남아요." },
+    { "id": "sol",  "kor": "솔",     "letter": "G", "pc": 7,  "keys": ["K1","K2","K3"],
+      "tip": "오른손을 전부 뗍니다. 왼손 세 손가락만!" },
+    { "id": "la",   "kor": "라",     "letter": "A", "pc": 9,  "keys": ["K1","K2"],
+      "tip": "솔에서 K3(왼손 약지)을 뗍니다." },
+    { "id": "si",   "kor": "시",     "letter": "B", "pc": 11, "keys": ["K1"],
+      "tip": "K1(왼손 검지) 하나만. 첫 소리 내기에 가장 좋은 음!" },
+    { "id": "hido", "kor": "높은 도", "letter": "C", "pc": 12, "keys": ["K2"],
+      "tip": "시에서 K1을 떼고 K2(왼손 중지) 하나만 누릅니다. 색소폰과 똑같은 약속이에요." }
+  ],
+  "semitones": [
+    { "id": "doSharp",  "kor": "도♯·레♭",       "pc": 1,  "viaSharp": "do",  "viaFlat": "re",  "cross": [] },
+    { "id": "reSharp",  "kor": "레♯·미♭",       "pc": 3,  "viaSharp": "re",  "viaFlat": "mi",  "cross": [] },
+    { "id": "faSharp",  "kor": "파♯·솔♭",       "pc": 6,  "viaSharp": "fa",  "viaFlat": "sol",
+      "cross": [["K1","K2","K3","K5"]],
+      "crossTip": "교차운지: 파에서 K4를 떼고 K5를 누릅니다. ♯ 키 없이도 가능 — 색소폰의 F♯과 같은 모양." },
+    { "id": "solSharp", "kor": "솔♯·라♭",       "pc": 8,  "viaSharp": "sol", "viaFlat": "la",
+      "cross": [["K1","K2","K4"]],
+      "crossTip": "교차운지: 라에서 K4(오른손 검지)를 더 누릅니다." },
+    { "id": "laSharp",  "kor": "라♯·시♭",       "pc": 10, "viaSharp": "la",  "viaFlat": "si",
+      "cross": [["K1","K3"], ["K1","K4"]],
+      "crossTip": "교차운지 2가지: K1+K3 또는 K1+K4. 색소폰의 '원 앤 쓰리/포' B♭과 같은 발상." },
+    { "id": "hidoSharp", "kor": "높은 도♯·레♭",  "pc": 13, "viaSharp": "hido", "viaFlat": null,
+      "cross": [[]],
+      "crossTip": "모든 키를 뗍니다(전부 열기). 색소폰 가운데 도♯과 같은 약속 — 가장 신기한 운지!" }
+  ],
+  "octaveLayers": [
+    { "layer": -1, "kor": "한 층 아래", "thumb": ["OCT_DOWN"], "deviceRange": "C2~C3",
+      "tip": "왼손 엄지로 [−1] 키를 누른 채 연주하면 모든 음이 한 옥타브 내려갑니다." },
+    { "layer": 0,  "kor": "기준층",     "thumb": [],            "deviceRange": "C3~C4",
+      "tip": "옥타브 키를 아무것도 누르지 않은 기본 층. 엄지는 키 사이 '쉼 원' 위에 가볍게." },
+    { "layer": 1,  "kor": "한 층 위",   "thumb": ["OCT_UP"],    "deviceRange": "C4~C5",
+      "tip": "[+1] 키를 누른 채 연주합니다." },
+    { "layer": 2,  "kor": "두 층 위",   "thumb": ["OCT_UP2"],   "deviceRange": "C5~C6",
+      "tip": "맨 위 OK 키를 누른 채 연주합니다. (OK 키의 출고 기본 동작 = +2 옥타브)" }
+  ]
+}

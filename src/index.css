@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+    Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  @apply bg-stage text-ink;
+  overscroll-behavior-y: none;
+}
+
+/* 앱 셸 높이 — dvh 미지원 브라우저 폴백 */
+.app-shell {
+  height: 100vh;
+}
+@supports (height: 100dvh) {
+  .app-shell {
+    height: 100dvh;
+  }
+}
+
+/* 음이름·숫자 표기 */
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* 포커스 링 — 브랜드 오렌지 */
+:focus-visible {
+  outline: 2px solid #ff8a00;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---------- 키 펄스 (상태가 변한 키만 0.5초) ---------- */
+@keyframes key-pulse {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.22);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+.key-pulse {
+  animation: key-pulse 0.5s ease-out both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.key-pulse-ring {
+  animation: pulse-ring 0.5s ease-out both;
+  transform-box: fill-box;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+/* ---------- RGB 라이트 링 글로우 (시그니처) ---------- */
+@keyframes ring-sweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+  85% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+}
+.ring-sweep {
+  animation: ring-sweep 0.6s ease-out both;
+}
+
+/* ---------- 오답 흔들림 ---------- */
+@keyframes shake-x {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+.shake-x {
+  animation: shake-x 0.4s ease-in-out both;
+}
+
+/* ---------- 등장 ---------- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fade-up 0.25s ease-out both;
+}
+
+/* ---------- 재생 버튼 살짝 커짐 ---------- */
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pop {
+  animation: pop 0.35s ease-out both;
+}
+
+/* 가로 스크롤 리본 */
+.ribbon-scroll {
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.ribbon-scroll::-webkit-scrollbar {
+  display: none;
+}
+.ribbon-item {
+  scroll-snap-align: center;
+}
+
+/* reduced-motion 사용자: 애니메이션 생략, 정적 강조로 대체 */
+@media (prefers-reduced-motion: reduce) {
+  .key-pulse,
+  .key-pulse-ring,
+  .ring-sweep,
+  .shake-x,
+  .fade-up,
+  .pop {
+    animation: none !important;
+  }
+  .key-pulse {
+    stroke: #1a1d21;
+    stroke-width: 3px;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
