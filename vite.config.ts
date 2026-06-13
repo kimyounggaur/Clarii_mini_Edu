@@ -6,7 +6,10 @@ import path from "node:path";
 
 // 이 머신의 Node 25는 비ASCII(한글) 경로 대상 fs.rmSync(recursive)에서 크래시(0xC0000409)하므로
 // 빌드 산출물은 ASCII 임시 경로에 만들고 dist로 복사한다 (빌드.cmd / README 참고).
-const outDir = path.join(os.tmpdir(), "clarii-master-dist");
+const outDir =
+  process.platform === "win32" && !process.env.VERCEL
+    ? path.join(os.tmpdir(), "clarii-master-dist")
+    : "dist";
 
 export default defineConfig({
   plugins: [
