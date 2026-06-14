@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import type { ProC20FingeringMode } from "../data/proC20/types";
 import { safeStorage } from "../utils/safeStorage";
 
 export type GameId = "make" | "read" | "ear" | "rush";
@@ -14,6 +15,12 @@ interface ProgressState {
   completedLessons: string[];
   /** 레슨별 현재 카드 위치 (이어하기) */
   lessonCardPos: Record<string, number>;
+  /** 완료한 PRO C20 레슨 id 목록 (P20-L0~P20-L10) */
+  completedProC20Lessons: string[];
+  /** PRO C20 레슨별 현재 카드 위치 (이어하기) */
+  proC20LessonCardPos: Record<string, number>;
+  /** PRO C20 학습 화면에서 마지막으로 선택한 운지 모드 */
+  selectedProC20Mode: ProC20FingeringMode;
   /** 전체 레슨 잠금 해제 */
   unlockAll: boolean;
   /** 게임 기록 */
@@ -28,6 +35,9 @@ interface ProgressState {
 
   completeLesson: (id: string) => void;
   setLessonCardPos: (id: string, pos: number) => void;
+  completeProC20Lesson: (id: string) => void;
+  setProC20LessonCardPos: (id: string, pos: number) => void;
+  setSelectedProC20Mode: (mode: ProC20FingeringMode) => void;
   setUnlockAll: (v: boolean) => void;
   recordGame: (game: GameId, score: number) => { newBest: boolean };
   setEarLevel: (lv: number) => void;
@@ -52,6 +62,9 @@ export const useProgressStore = create<ProgressState>()(
     (set, get) => ({
       completedLessons: [],
       lessonCardPos: {},
+      completedProC20Lessons: [],
+      proC20LessonCardPos: {},
+      selectedProC20Mode: "robkooSax",
       unlockAll: false,
       gameRecords: { ...EMPTY_RECORDS },
       streakDays: 0,
@@ -67,6 +80,15 @@ export const useProgressStore = create<ProgressState>()(
         ),
       setLessonCardPos: (id, pos) =>
         set((s) => ({ lessonCardPos: { ...s.lessonCardPos, [id]: pos } })),
+      completeProC20Lesson: (id) =>
+        set((s) =>
+          s.completedProC20Lessons.includes(id)
+            ? s
+            : { completedProC20Lessons: [...s.completedProC20Lessons, id] },
+        ),
+      setProC20LessonCardPos: (id, pos) =>
+        set((s) => ({ proC20LessonCardPos: { ...s.proC20LessonCardPos, [id]: pos } })),
+      setSelectedProC20Mode: (mode) => set({ selectedProC20Mode: mode }),
       setUnlockAll: (v) => set({ unlockAll: v }),
       recordGame: (game, score) => {
         const s = get();
@@ -98,6 +120,9 @@ export const useProgressStore = create<ProgressState>()(
         set({
           completedLessons: [],
           lessonCardPos: {},
+          completedProC20Lessons: [],
+          proC20LessonCardPos: {},
+          selectedProC20Mode: "robkooSax",
           gameRecords: { ...EMPTY_RECORDS },
           streakDays: 0,
           lastPlayDay: null,

@@ -5,7 +5,7 @@ import { ExplorerView } from "./views/ExplorerView";
 import { LearnView } from "./views/LearnView";
 import { PracticeView } from "./views/PracticeView";
 import { SettingsView } from "./views/SettingsView";
-import { FINGERING_ERRORS } from "./main";
+import { FINGERING_ERRORS, PRO_C20_ERRORS } from "./main";
 
 const TABS: { id: TabId; emoji: string; label: string }[] = [
   { id: "explorer", emoji: "🎵", label: "운지표" },
@@ -20,12 +20,12 @@ export default function App() {
 
   return (
     <div className="app-shell mx-auto flex max-w-[1100px] flex-col">
-      {FINGERING_ERRORS.length > 0 && (
+      {(FINGERING_ERRORS.length > 0 || PRO_C20_ERRORS.length > 0) && (
         <div
           role="alert"
           className="bg-danger px-4 py-2 text-center text-xs font-bold text-white"
         >
-          ⚠️ 개발용 경고: 운지 데이터 검증 실패 {FINGERING_ERRORS.length}건 — 콘솔을 확인하세요
+          ⚠️ 개발용 경고: 운지 데이터 검증 실패 {FINGERING_ERRORS.length + PRO_C20_ERRORS.length}건 — 콘솔을 확인하세요
         </div>
       )}
 

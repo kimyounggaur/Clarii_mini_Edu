@@ -1,0 +1,162 @@
+{
+  "instrument": "Robkoo Clarii PRO C20",
+  "manual": "Clarii_PRO_C20_User_s_Manual_EN_V3.1.pdf",
+  "clariiOs": "3.1",
+  "convention": "Hold = pressed key, Release = released key. Exact Appendix fingering-chart rows require visual transcription from manual pages 61-68. Panel/rule drills below are verified from manual panel descriptions and Saxophone mode notes.",
+  "modes": {
+    "robkooSax": {
+      "label": "ROBKOO Sax Fingering",
+      "status": "partial",
+      "groups": [
+        {
+          "id": "controllerBasics",
+          "label": "PRO C20 control drills",
+          "entries": [
+            {
+              "id": "robkooSax-bis-key",
+              "mode": "robkooSax",
+              "group": "controller",
+              "note": { "solfegeKor": "Bis 키", "deviceName": "Bis" },
+              "pressed": ["BIS"],
+              "variants": [],
+              "tipKor": "Bis 키 위치를 익히는 연습입니다. 운지표 음정 데이터가 아니라 패널 설명 기반 컨트롤 드릴입니다.",
+              "source": { "manualPage": 5, "pdfPage": 6, "heading": "Panel Descriptions", "rowLabel": "Bis Key" },
+              "verification": "panelVerified"
+            },
+            {
+              "id": "robkooSax-lp1-key",
+              "mode": "robkooSax",
+              "group": "controller",
+              "note": { "solfegeKor": "LP1", "deviceName": "+1 semi" },
+              "pressed": ["LP1"],
+              "variants": [],
+              "tipKor": "LP1은 누르는 동안 음을 한 반음 올리는 보조 키입니다.",
+              "source": { "manualPage": 6, "pdfPage": 6, "heading": "Panel Descriptions", "rowLabel": "LP1 Key" },
+              "verification": "panelVerified"
+            },
+            {
+              "id": "robkooSax-lp2-key",
+              "mode": "robkooSax",
+              "group": "controller",
+              "note": { "solfegeKor": "LP2", "deviceName": "-1 semi" },
+              "pressed": ["LP2"],
+              "variants": [],
+              "tipKor": "LP2는 누르는 동안 음을 한 반음 내리는 보조 키입니다.",
+              "source": { "manualPage": 6, "pdfPage": 6, "heading": "Panel Descriptions", "rowLabel": "LP2 Key" },
+              "verification": "panelVerified"
+            },
+            {
+              "id": "robkooSax-articulation-1",
+              "mode": "robkooSax",
+              "group": "controller",
+              "note": { "solfegeKor": "아티큘레이션 1", "deviceName": "Articulation 1" },
+              "pressed": ["ASTERISK_1"],
+              "variants": [],
+              "tipKor": "⿵ 키는 Articulation 1을 트리거하거나 즐겨찾기 사운드 전환에 쓸 수 있습니다.",
+              "source": { "manualPage": 5, "pdfPage": 6, "heading": "Panel Descriptions", "rowLabel": "Asterisk Key" },
+              "verification": "panelVerified"
+            }
+          ]
+        }
+      ],
+      "pendingCharts": [
+        { "manualPage": 61, "pdfPage": 34, "heading": "ROBKOO Sax Fingering / EWI Fingering" },
+        { "manualPage": 62, "pdfPage": 34, "heading": "Express High Octave Fingering" },
+        { "manualPage": 63, "pdfPage": 35, "heading": "Express Low Octave Fingering" }
+      ]
+    },
+    "ewi": {
+      "label": "EWI Fingering",
+      "status": "partial",
+      "groups": [
+        {
+          "id": "octaveRollerBasics",
+          "label": "Octave roller drills",
+          "entries": [
+            {
+              "id": "ewi-standard-octave-range",
+              "mode": "ewi",
+              "group": "controller",
+              "note": { "solfegeKor": "기준 옥타브", "deviceName": "Octave 0", "octaveOffset": 0 },
+              "pressed": ["OCT_RANGE_0"],
+              "octaveRange": "0",
+              "variants": [],
+              "tipKor": "두 textured roller 사이에 엄지를 두는 기준 위치입니다.",
+              "source": { "manualPage": 7, "pdfPage": 7, "heading": "Panel Descriptions", "rowLabel": "Octave rollers" },
+              "verification": "panelVerified"
+            },
+            {
+              "id": "ewi-portamento-plate",
+              "mode": "ewi",
+              "group": "controller",
+              "note": { "solfegeKor": "포르타멘토", "deviceName": "Portamento" },
+              "pressed": ["PORTAMENTO_PLATE"],
+              "variants": [],
+              "tipKor": "포르타멘토 플레이트는 음 사이를 부드럽게 이어 주는 글라이드 컨트롤입니다.",
+              "source": { "manualPage": 8, "pdfPage": 7, "heading": "Panel Descriptions", "rowLabel": "Portamento plate" },
+              "verification": "panelVerified"
+            }
+          ]
+        }
+      ],
+      "pendingCharts": [
+        { "manualPage": 61, "pdfPage": 34, "heading": "ROBKOO Sax Fingering / EWI Fingering" }
+      ]
+    },
+    "saxophone": {
+      "label": "Saxophone Fingering",
+      "status": "partial",
+      "groups": [
+        {
+          "id": "saxophoneRules",
+          "label": "Saxophone side-key rule drills",
+          "entries": [
+            {
+              "id": "saxophone-bis-b-flat",
+              "mode": "saxophone",
+              "group": "controller",
+              "note": { "solfegeKor": "B 플랫 규칙", "deviceName": "Bis on B" },
+              "pressed": ["BIS"],
+              "variants": [],
+              "tipKor": "Saxophone mode에서 Bis는 B를 연주할 때만 -1 semi 역할을 합니다.",
+              "source": { "manualPage": 64, "pdfPage": 35, "heading": "Saxophone Fingering", "rowLabel": "Bis Key" },
+              "verification": "panelVerified"
+            },
+            {
+              "id": "saxophone-lp1-c-g",
+              "mode": "saxophone",
+              "group": "controller",
+              "note": { "solfegeKor": "LP1 특수 규칙", "deviceName": "LP1 on C/G" },
+              "pressed": ["LP1"],
+              "variants": [],
+              "tipKor": "Saxophone mode에서 LP1은 C 또는 G를 연주할 때만 +1 semi 역할을 합니다.",
+              "source": { "manualPage": 63, "pdfPage": 35, "heading": "Saxophone Fingering", "rowLabel": "LP1 Key" },
+              "verification": "panelVerified"
+            },
+            {
+              "id": "saxophone-asterisk-2",
+              "mode": "saxophone",
+              "group": "controller",
+              "note": { "solfegeKor": "⿶ 규칙", "deviceName": "Asterisk 2 +1 semi" },
+              "pressed": ["ASTERISK_2"],
+              "variants": [],
+              "tipKor": "Saxophone mode에서 ⿶ 키는 재지정하지 않았다면 모든 음에서 +1 semi 역할을 합니다.",
+              "source": { "manualPage": 63, "pdfPage": 35, "heading": "Saxophone Fingering", "rowLabel": "Asterisk Key 2" },
+              "verification": "panelVerified"
+            }
+          ]
+        }
+      ],
+      "pendingCharts": [
+        { "manualPage": 63, "pdfPage": 35, "heading": "Saxophone Fingering" }
+      ]
+    },
+    "robkooDizi": { "label": "ROBKOO Dizi Fingering", "status": "planned", "groups": [], "pendingCharts": [{ "manualPage": 65, "pdfPage": 36, "heading": "ROBKOO Hulusi / ROBKOO Dizi Fingering" }] },
+    "robkooHulusi": { "label": "ROBKOO Hulusi Fingering", "status": "planned", "groups": [], "pendingCharts": [{ "manualPage": 65, "pdfPage": 36, "heading": "ROBKOO Hulusi / ROBKOO Dizi Fingering" }] },
+    "dizi": { "label": "Dizi Fingering", "status": "planned", "groups": [], "pendingCharts": [{ "manualPage": 66, "pdfPage": 36, "heading": "Hulusi / Dizi Fingering" }] },
+    "hulusi": { "label": "Hulusi Fingering", "status": "planned", "groups": [], "pendingCharts": [{ "manualPage": 66, "pdfPage": 36, "heading": "Hulusi / Dizi Fingering" }] },
+    "ewiF": { "label": "EWI(F) Fingering", "status": "planned", "groups": [], "pendingCharts": [{ "manualPage": 67, "pdfPage": 37, "heading": "EWI(F) Fingering" }] },
+    "evi": { "label": "EVI Fingering", "status": "planned", "groups": [], "pendingCharts": [{ "manualPage": 67, "pdfPage": 37, "heading": "EVI Fingering" }] },
+    "whistle": { "label": "Whistle Fingering", "status": "planned", "groups": [], "pendingCharts": [{ "manualPage": 67, "pdfPage": 37, "heading": "Whistle Fingering" }] }
+  }
+}
