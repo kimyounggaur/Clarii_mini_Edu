@@ -111,6 +111,7 @@ export function FingeringView({
           changeStamp={stampRef.current}
           interactive={interactive}
           onToggleKey={onToggleKey}
+          showGuideLabels={false}
           showFingerLabels={showFingerLabels}
           ringGlow={ringGlow}
           showHands={showHands}
@@ -132,6 +133,7 @@ export function FingeringView({
           changeStamp={stampRef.current}
           interactive={interactive}
           onToggleKey={onToggleKey}
+          showGuideLabels={false}
           showFingerLabels={showFingerLabels}
           displayText={displayText}
           showHands={showHands}

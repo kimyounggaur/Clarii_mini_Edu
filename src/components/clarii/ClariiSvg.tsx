@@ -68,20 +68,57 @@ export function ClariiSvg({
 
       {face === "front" && (
         <g aria-hidden>
-          {/* 로고 점 */}
-          <circle cx={LOGO_DOT.cx} cy={LOGO_DOT.cy} r={LOGO_DOT.r} fill="#D7DBE0" />
-          {/* 스피커 그릴 (점 4×6) */}
+          <defs>
+            <linearGradient id={`badge-${uid}`} x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#4C526C" />
+              <stop offset="58%" stopColor="#232738" />
+              <stop offset="100%" stopColor="#111521" />
+            </linearGradient>
+            <radialGradient id={`speaker-hole-${uid}`} cx="35%" cy="30%" r="70%">
+              <stop offset="0%" stopColor="#4A506C" />
+              <stop offset="55%" stopColor="#202437" />
+              <stop offset="100%" stopColor="#0B0D15" />
+            </radialGradient>
+          </defs>
+          {/* ROBKOO 로고 패널 */}
+          <g>
+            <rect
+              x={LOGO_DOT.cx - 15}
+              y={LOGO_DOT.cy - 23}
+              width={30}
+              height={35}
+              rx={2.5}
+              fill={`url(#badge-${uid})`}
+              stroke="#626984"
+              strokeWidth={0.8}
+            />
+            <ellipse cx={LOGO_DOT.cx - 5.2} cy={LOGO_DOT.cy - 7} rx={4.2} ry={8.2} fill="#E8EAF2" transform={`rotate(18 ${LOGO_DOT.cx - 5.2} ${LOGO_DOT.cy - 7})`} />
+            <ellipse cx={LOGO_DOT.cx + 5.2} cy={LOGO_DOT.cy - 7} rx={4.2} ry={8.2} fill="#D8DAE5" transform={`rotate(18 ${LOGO_DOT.cx + 5.2} ${LOGO_DOT.cy - 7})`} />
+            <text x={LOGO_DOT.cx} y={LOGO_DOT.cy + 23} textAnchor="middle" fontSize={5.6} fontWeight={800} fill="#30364D">
+              ROBKOO
+            </text>
+          </g>
+          {/* 스피커 그릴 */}
           {Array.from({ length: SPEAKER.rows }).flatMap((_, r) =>
             Array.from({ length: SPEAKER.cols }).map((_, c) => (
-              <circle
-                key={`sp-${r}-${c}`}
-                cx={SPEAKER.cx + (c - (SPEAKER.cols - 1) / 2) * SPEAKER.gapX}
-                cy={636 + 6 + r * SPEAKER.gapY}
-                r={SPEAKER.dotR}
-                fill="#B8BDC6"
-              />
+              <g key={`sp-${r}-${c}`}>
+                <circle
+                  cx={SPEAKER.cx + (c - (SPEAKER.cols - 1) / 2) * SPEAKER.gapX}
+                  cy={SPEAKER.top + r * SPEAKER.gapY}
+                  r={SPEAKER.dotR}
+                  fill={`url(#speaker-hole-${uid})`}
+                />
+                <circle
+                  cx={SPEAKER.cx + (c - (SPEAKER.cols - 1) / 2) * SPEAKER.gapX - 0.55}
+                  cy={SPEAKER.top + r * SPEAKER.gapY - 0.55}
+                  r={0.45}
+                  fill="#D9DBF4"
+                  opacity={0.32}
+                />
+              </g>
             )),
           )}
+          <rect x={SPEAKER.cx - 29} y={SPEAKER.top - 8} width={58} height={SPEAKER.rows * SPEAKER.gapY + 8} rx={7} fill="none" stroke="#6B7199" strokeWidth={0.6} opacity={0.18} />
           {/* RGB 라이트 링 */}
           <defs>
             <linearGradient id={`rainbow-${uid}`} x1="0" y1="0" x2="1" y2="0">
@@ -108,7 +145,19 @@ export function ClariiSvg({
             width={RGB_RING.width}
             height={RGB_RING.height}
             rx={RGB_RING.r}
-            fill="#DDE1E6"
+            fill="#5368FF"
+            stroke="#7A82FF"
+            strokeWidth={1}
+            opacity={0.96}
+          />
+          <rect
+            x={RGB_RING.cx - RGB_RING.width / 2 + 3}
+            y={RGB_RING.cy - RGB_RING.height / 2 + 2}
+            width={RGB_RING.width - 6}
+            height={4}
+            rx={2}
+            fill="#CED4FF"
+            opacity={0.36}
           />
           {ringGlow && (
             <g clipPath={`url(#ringclip-${uid})`}>
@@ -129,14 +178,34 @@ export function ClariiSvg({
         <g>
           {/* 디스플레이 */}
           <rect
+            x={BACK_DISPLAY.cx - BACK_DISPLAY.w / 2 - 3}
+            y={BACK_DISPLAY.cy - BACK_DISPLAY.h / 2 - 3}
+            width={BACK_DISPLAY.w + 6}
+            height={BACK_DISPLAY.h + 6}
+            rx={BACK_DISPLAY.r + 3}
+            fill="#7379A2"
+            stroke="#444B70"
+            strokeWidth={1}
+            opacity={0.9}
+          />
+          <rect
             x={BACK_DISPLAY.cx - BACK_DISPLAY.w / 2}
             y={BACK_DISPLAY.cy - BACK_DISPLAY.h / 2}
             width={BACK_DISPLAY.w}
             height={BACK_DISPLAY.h}
             rx={BACK_DISPLAY.r}
-            fill="#2B2F36"
-            stroke="#1A1D21"
+            fill="#1D2330"
+            stroke="#10141E"
             strokeWidth={1.5}
+          />
+          <rect
+            x={BACK_DISPLAY.cx - BACK_DISPLAY.w / 2 + 5}
+            y={BACK_DISPLAY.cy - BACK_DISPLAY.h / 2 + 5}
+            width={BACK_DISPLAY.w - 10}
+            height={7}
+            rx={3.5}
+            fill="#FFFFFF"
+            opacity={0.1}
           />
           <text
             x={BACK_DISPLAY.cx}
@@ -155,7 +224,7 @@ export function ClariiSvg({
             cy={THUMB_REST.cy}
             r={THUMB_REST.r}
             fill="none"
-            stroke="#9AA1AA"
+            stroke="#4F5578"
             strokeWidth={1.8}
             strokeDasharray="3.5 3"
             aria-hidden
@@ -176,8 +245,8 @@ export function ClariiSvg({
               d={`M ${THUMB_HOOK.cx - THUMB_HOOK.w / 2} ${THUMB_HOOK.cy - THUMB_HOOK.h / 2}
                   h ${THUMB_HOOK.w} a 5 5 0 0 1 5 5 v ${THUMB_HOOK.h - 10} a 5 5 0 0 1 -5 5
                   h -10 v -8 a 4 4 0 0 0 -4 -4 h -${THUMB_HOOK.w - 14} z`}
-              fill="#F1F3F5"
-              stroke="#C9CDD4"
+              fill="#A6AAD0"
+              stroke="#454B71"
               strokeWidth={1.8}
               strokeLinejoin="round"
             />
@@ -188,8 +257,8 @@ export function ClariiSvg({
             )}
           </g>
           {/* 전원 버튼 · 스트랩 링 (장식) */}
-          <circle cx={120} cy={620} r={8} fill="#F1F3F5" stroke="#C9CDD4" strokeWidth={1.5} aria-hidden />
-          <text x={120} y={624} textAnchor="middle" fontSize={9} fill="#9AA1AA" aria-hidden>
+          <circle cx={120} cy={630} r={8} fill="#A8ACD2" stroke="#4D5379" strokeWidth={1.5} aria-hidden />
+          <text x={120} y={634} textAnchor="middle" fontSize={9} fill="#2E344F" aria-hidden>
             ⏻
           </text>
           <circle
