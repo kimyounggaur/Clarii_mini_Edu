@@ -257,8 +257,8 @@ export function ClariiSvg({
             )}
           </g>
           {/* 전원 버튼 · 스트랩 링 (장식) */}
-          <circle cx={120} cy={630} r={8} fill="#A8ACD2" stroke="#4D5379" strokeWidth={1.5} aria-hidden />
-          <text x={120} y={634} textAnchor="middle" fontSize={9} fill="#2E344F" aria-hidden>
+          <circle cx={120} cy={730} r={8} fill="#A8ACD2" stroke="#4D5379" strokeWidth={1.5} aria-hidden />
+          <text x={120} y={734} textAnchor="middle" fontSize={9} fill="#2E344F" aria-hidden>
             ⏻
           </text>
           <circle

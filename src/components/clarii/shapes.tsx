@@ -181,9 +181,6 @@ export function KeyShape({ pos, pressed, changed, changeStamp, interactive, onTo
           opacity={0.34}
           strokeLinecap="round"
         />
-        {pos.id === "K7" && (
-          <ellipse cx={pos.cx + pos.r + 13} cy={pos.cy + 4} rx={12} ry={15} fill="#171B2D" opacity={0.72} />
-        )}
       </g>
     ) : (
       <g>
